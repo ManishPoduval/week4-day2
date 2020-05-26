@@ -7,6 +7,11 @@ app.get('/', function (req, res) {
   res.send('Heyyyyy Works')
 })
 
+app.get('/student/:studentName', function (req, res) {
+    console.log(req.params)
+    res.send(`Hey ${req.params.studentName} !!!!!`)
+  })
+
 app.get('/home', function (req, res) {
     res.send('I\'m at home');
 })
