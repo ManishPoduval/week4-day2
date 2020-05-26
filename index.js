@@ -10,6 +10,8 @@ function ourMiddleWare(req, res, next){
 app.use(ourMiddleWare);
 app.use(express.static('public'))
 
+app.set('view engine', 'hbs');
+
 app.get('/', function (req, res) {
     res.sendFile(__dirname + '/views/home.html');
 })
@@ -18,6 +20,20 @@ app.get('/about', function (req, res) {
     res.sendFile(__dirname + '/views/about.html');
 })
 
+app.get('/all-students', function (req, res) {
+    let students =  [
+        {name: 'Andy', age: 19},
+        {name: 'Abdy', age: 22},
+        {name: 'Lucy', age: 21},
+        {name: 'Juan', age: 20}
+    ]
+    res.render(__dirname + '/views/hbs/students.hbs', {students})
+})
+
+// app.get('/student/:studentName', function (req, res) {
+    
+//       res.render(__dirname + '/views/hbs/students.hbs', {studentName: req.params.studentName})
+// })
 
 app.listen(3000, '127.0.0.1', () => {
     console.log(`Server running at http://127.0.0.1:3000/`);
