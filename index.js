@@ -1,39 +1,54 @@
-console.log('Hey, Node is working!');
-
 const express = require('express')
 const app = express()
- 
-app.get('/', function (req, res) {
-  res.send('Heyyyyy Works')
-})
 
-app.get('/student/:studentName', function (req, res) {
-    console.log(req.params)
-    res.send(`Hey ${req.params.studentName} !!!!!`)
+function ourMiddleWare(req, res, next){
+    console.log('Hello');
+    next();
+}
+
+
+app.use(ourMiddleWare);
+
+app.get('/', function (req, res) {
+    res.send('Heyyyyy Works')
   })
 
-app.get('/home', function (req, res) {
-    res.send('I\'m at home');
-})
-
-app.get('/bootcamp', function (req, res) {
-    res.send('Node is fun!!!');
-})
-
-app.get('/tuesday', function (req, res) {
-    res.send('Heyyyyy its Tuesday')
-})
- 
 app.listen(3000, '127.0.0.1', () => {
     console.log(`Server running at http://127.0.0.1:3000/`);
 })
 
 
+ 
 
 
 
+//--------------Express Routes ----------------------- 
+
+// app.get('/', function (req, res) {
+//     res.send('Heyyyyy Works')
+//   })
+  
+//   app.get('/student/:studentName', function (req, res) {
+//       let params = req.params
+//       res.send(`Hey ${params.studentName} !!!!!`)
+//     })
+  
+//   app.get('/home/', function (req, res) {
+//       res.send('I\'m at home');
+//   })
+  
+//   app.get('/bootcamp', function (req, res) {
+//       res.send('Node is fun!!!');
+//   })
+  
+//   app.get('/tuesday', function (req, res) {
+//       res.send('Heyyyyy its Tuesday')
+//   })
+   
 
 
+
+// ---------------- Node server --------------------
 // const http = require('http');
 
 // const hostname = '127.0.0.1';
@@ -49,6 +64,7 @@ app.listen(3000, '127.0.0.1', () => {
 
 
 
+// -----------------Using Chalk-------------------------------
 // const chalk = require('chalk');
 // console.log(chalk.green(
 //     'I am a green line ' +
@@ -63,7 +79,7 @@ app.listen(3000, '127.0.0.1', () => {
 
 // console.log(bootcampName)
 
-
+// -----------------Using Faker-------------------------------
 // var faker = require('faker');
 
 // for (let i=0 ; i< 10; i++) {
