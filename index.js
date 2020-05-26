@@ -2,16 +2,17 @@ const express = require('express')
 const app = express()
 
 function ourMiddleWare(req, res, next){
-    console.log('Hello');
+    console.log(__dirname);
     next();
 }
 
 
 app.use(ourMiddleWare);
+app.use(express.static('public'))
 
 app.get('/', function (req, res) {
-    res.send('Heyyyyy Works')
-  })
+    res.sendFile(__dirname + '/views/home.html');
+})
 
 app.listen(3000, '127.0.0.1', () => {
     console.log(`Server running at http://127.0.0.1:3000/`);
